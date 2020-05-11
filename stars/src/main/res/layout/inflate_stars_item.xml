@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.android.stars.model.response.Results" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="listener"
+            type="com.android.stars.adapter.listener.StarsListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_170sdp">
+
+        <ImageView
+            android:id="@+id/moviesImg"
+            android:layout_width="match_parent"
+            android:src="@drawable/ic_movies"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:onClick="@{() -> listener.onClickItem(position, data)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

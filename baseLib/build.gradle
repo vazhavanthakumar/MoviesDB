@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+
+    dataBinding { //data binding enabled
+        enabled = true
+    }
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    /*Android Support Lib*/
+    api supportDependencies.appCompat
+    /*Android Design Support Lib*/
+    api supportDependencies.design
+    /*Constraint Layout Support Lib*/
+    api supportDependencies.constraintlayout
+    /*Retrofit*/
+    api retrofitDependencies.retrofit
+    /*Api Logging*/
+    api retrofitDependencies.okhttp
+    /*Moshi*/
+    api moshi
+    api retrofitDependencies.moshi
+    /*Glide*/
+    api gildeDependencies.gilde
+
+    annotationProcessor gildeDependencies.compiler
+    /*rx java */
+    api rxjava
+    api retrofitDependencies.rxAdapterJava
+    api rxjava2Dependencies.rxjava2
+    api rxjava2Dependencies.rxandroid
+    /*Timber log library*/
+    api timber
+    /*mockito unit test*/
+    testApi mockito
+    /*junit unit test*/
+    testApi junit
+    /*ui test & espresso test*/
+    androidTestApi testRunner
+    androidTestApi espresso
+    /*scalable DP*/
+    api scalableDP
+
+    /*Navigation Fragment*/
+    api navigation.navigationFragment
+    /*Navigation UI*/
+    api navigation.navigationUI
+    /*Navigation Dynamic Feature Module*/
+    api navigation.dynamicFeatureModule
+
+    /*Gson */
+    api gson
+}
+
+androidExtensions {
+    experimental = true
+}
+
+
+

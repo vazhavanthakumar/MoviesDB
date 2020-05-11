@@ -1,0 +1,6 @@
+rootProject.name='MoviesDB'
+include ':app'
+include ':baseLib'
+include ':movies'
+include ':stars'
+include ':details'
